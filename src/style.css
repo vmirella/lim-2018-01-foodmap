@@ -1,3 +1,16 @@
+.body-color {
+  background-color: #545050;
+  color: #F78805;
+}
+
+h1 {
+  padding: 20px 0;
+}
+
+h4 {
+  padding: 10px 0 10px;
+}
+
 .map {
   height: 400px;
 }

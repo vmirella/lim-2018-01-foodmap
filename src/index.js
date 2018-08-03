@@ -8,10 +8,21 @@ const modalName = document.getElementById('modal-name');
 const modalAddress = document.getElementById('modal-address');
 const modalPhone = document.getElementById('modal-phone');
 
+//contenedores
+const splash = document.getElementById('splash');
+const divContainer = document.getElementById('div-container');
+
 let map;
 let service;
 let infoWindow;
 let markers = [];
+
+window.onload = () => {
+	setTimeout(() => {
+		splash.style.display = 'none';
+		divContainer.style.display = 'block';
+	}, 2000); //tiempo en milisegundos
+};
 
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -101,8 +112,8 @@ function createMarker(place) {
 
 	service.getDetails(request, function(place, status) {
 		//Imprimimos el local en la lista de resultados
-		let output = `<li class="media result-data" data-name="${place.name}" data-phone="${place.formatted_phone_number}" data-address="${place.formatted_address}" data-image="${place.photo}">
-			<img class="mr-3" src="${place.photos[0]}" alt="image">
+		let output = `<li class="media result-data" data-name="${place.name}" data-phone="${place.formatted_phone_number}" data-address="${place.formatted_address}" data-image="${place.icon}">
+			<img class="mr-3" src="${place.icon}" alt="image">
 			<div class="media-body">
 				<h5 class="mt-0 mb-1">${place.name}</h5>
 				${place.formatted_address}

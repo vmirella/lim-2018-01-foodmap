@@ -27,6 +27,6 @@ Una vez cerrado el modal debe volver a la vista principal.
 
 El diseño que se siguió en la versión desktop se puede ver a continuación:
 
-![alt text](images/splash2.png)
+![alt text](images/splash2.PNG)
 
-![alt text](images/index.png)
+![alt text](images/index.PNG)

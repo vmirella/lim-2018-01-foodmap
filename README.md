@@ -11,8 +11,7 @@ principal.
 ![Splash](https://github.com/AnaSalazar/curricula-js/blob/04-social-network/04-social-network/02-jquery/08-code-challenges/foodmap/splash.jpg?raw=true)
 
 En la vista principal se muestran todos los restaurantes "cerca de ti" junto
-con el input para filtrar tu elección *(Los criterios de filtrado son decisión
-tuya, puede ser por tipo de comida, costos, orden alfabético, etc.)*.
+con el input para filtrar (Ve que el texto de la busqueda se encuentre contenido dentro de los nombres de los restauranes que se muestran en el mapa).
 ![vista principal](https://github.com/AnaSalazar/curricula-js/blob/04-social-network/04-social-network/02-jquery/08-code-challenges/foodmap/2.jpg?raw=true)
 
 Ya que se hizo la elección del filtro deben mostrarse únicamente aquellos
@@ -25,3 +24,9 @@ este a través de un modal.
 
 Una vez cerrado el modal debe volver a la vista principal.
 ![ultima vista](https://github.com/AnaSalazar/curricula-js/blob/04-social-network/04-social-network/02-jquery/08-code-challenges/foodmap/6.jpg?raw=true)
+
+El diseño que se siguió en la versión desktop se puede ver a continuación:
+
+![alt text](images/splash2.png)
+
+![alt text](images/index.png)

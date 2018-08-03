@@ -30,7 +30,7 @@
             <div class="col-md-12">
               <h4 class="text-center">Comida cerca de ti</h4>
               <div class="input-group mb-3">
-                <input type="text" class="form-control"  id ="searchTextField" placeholder="Buscas donde comer..." aria-describedby="button-addon2">
+                <input type="text" class="form-control" id ="searchTextField" placeholder="Buscas donde comer..." aria-describedby="button-addon2">
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" type="button" id="button-search"><i class="fas fa-search"></i></button>
                 </div>
@@ -41,8 +41,8 @@
             <div class="col-md-12">
               <div id="divResults" class="results">
                 <ul class="list-unstyled" id="results">
-                  <li class="media">
-                    <img class="mr-3" src="https://lh5.googleusercontent.com/p/AF1QipP2nG39l3tmd2q6A4-bxZzB4orMrrpwISQJOi4j=w80-h92-p-k-no" alt="Generic placeholder image">
+                  <li class="media result-data" data-name="Restaurant norky’s" data-phone="213-2343" data-address="Av. almirante Grau 223" data-image="https://lh5.googleusercontent.com/p/AF1QipP2nG39l3tmd2q6A4-bxZzB4orMrrpwISQJOi4j=w80-h92-p-k-no">
+                    <img class="mr-3" src="https://lh5.googleusercontent.com/p/AF1QipP2nG39l3tmd2q6A4-bxZzB4orMrrpwISQJOi4j=w80-h92-p-k-no" alt="image">
                     <div class="media-body">
                       <h5 class="mt-0 mb-1">Restaurant norky’s</h5>
                       Av. almirante Grau 223
@@ -56,6 +56,30 @@
 
       </div>
 
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-result" tabindex="-1" role="dialog" aria-labelledby="modal-result" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Información de este local</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <img class="img-responsive" id="modal-image" src="https://lh5.googleusercontent.com/p/AF1QipP2nG39l3tmd2q6A4-bxZzB4orMrrpwISQJOi4j=w80-h92-p-k-no" alt="image">
+            <h5 id="modal-name">Restaurant norky’s</h5>
+            <p id="modal-address">Av. almirante Grau 223</p>
+            <p id="modal-phone">234-2342</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Pedir ahora</button>
+          </div>
+        </div>
+      </div>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

@@ -19,3 +19,7 @@ h4 {
   padding: 5px;
   background-color: #fff;
 }
+
+.results li {
+  cursor: pointer;
+}

@@ -128,3 +128,9 @@ buttonSearch.addEventListener('click', () => {
 	}, callback);
 });
 
+//Funciones jquery
+$(document).ready(() => {
+	$('#results').on('click', 'li', () => {
+		$('#modal-result').modal('show');
+	});
+});

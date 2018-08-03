@@ -111,6 +111,13 @@ function createMarker(place) {
 	};
 
 	service.getDetails(request, function(place, status) {
+		let photos = [
+			{
+			   "html_attributions" : [],
+			   "height" : 40,
+			   "width" : 40,
+			   "photo_reference" : "CnRvAAAAwMpdHeWlXl-lH0vp7lez4znKPIWSWvgvZFISdKx45AwJVP1Qp37YOrH7sqHMJ8C-vBDC546decipPHchJhHZL94RcTUfPa1jWzo-rSHaTlbNtjh-N68RkcToUCuY9v2HNpo5mziqkir37WU8FJEqVBIQ4k938TI3e7bf8xq-uwDZcxoUbO_ZJzPxremiQurAYzCTwRhE_V0"
+			}];
 		//Imprimimos el local en la lista de resultados
 		let output = `<li class="media result-data" data-name="${place.name}" data-phone="${place.formatted_phone_number}" data-address="${place.formatted_address}" data-image="${place.icon}">
 			<img class="mr-3" src="${place.icon}" alt="image">
@@ -126,7 +133,7 @@ function createMarker(place) {
 		output += `</div>
 			</li>`;
 
-		console.log(place.photos[0]);
+		//console.log(place.photos[0].html_attributions[0]); Imagen solo se muestra en consola
 
 		listResults.insertAdjacentHTML('beforeend', output);
 	});

@@ -1,7 +1,13 @@
 const input = document.getElementById('searchTextField');
 const divMap = document.getElementById('map');
 const buttonSearch = document.getElementById('button-search');
-const divResults = document.getElementById('results');
+const listResults = document.getElementById('results');
+//Objetos del modal
+const modalImage = document.getElementById('modal-image');
+const modalName = document.getElementById('modal-name');
+const modalAddress = document.getElementById('modal-address');
+const modalPhone = document.getElementById('modal-phone');
+
 let map;
 let service;
 let infoWindow;
@@ -10,7 +16,7 @@ let markers = [];
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: -12.145486, lng: -77.021850}, 
-		zoom: 15
+		zoom: 16
 	});
 	infoWindow = new google.maps.InfoWindow;
 	
@@ -30,7 +36,7 @@ function initMap() {
 			let service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({
 				location: pos,
-				radius: 500, 
+				radius: 1500, 
 				types: ['restaurant']
 			}, callback);
 
@@ -69,7 +75,7 @@ function createMarker(place) {
 		return;
 	}
 
-	let placeLoc = place.geometry.location;
+	//let placeLoc = place.geometry.location;
 	let image;
 	if (place.icon) {
 		image = new google.maps.MarkerImage(
@@ -92,16 +98,40 @@ function createMarker(place) {
 	let request =  {
 		reference: place.reference
 	};
+
+	service.getDetails(request, function(place, status) {
+		//Imprimimos el local en la lista de resultados
+		let output = `<li class="media result-data" data-name="${place.name}" data-phone="${place.formatted_phone_number}" data-address="${place.formatted_address}" data-image="${place.photo}">
+			<img class="mr-3" src="${place.photos[0]}" alt="image">
+			<div class="media-body">
+				<h5 class="mt-0 mb-1">${place.name}</h5>
+				${place.formatted_address}
+			<br>`;
+		
+		if (!!place.formatted_phone_number) { //Si tiene telefono
+			output += `${place.formatted_phone_number}`;
+		}
+		
+		output += `</div>
+			</li>`;
+
+		console.log(place.photos[0]);
+
+		listResults.insertAdjacentHTML('beforeend', output);
+	});
+
+	//Ponemos evento clic a la marca
 	google.maps.event.addListener(marker,'click',function(){
 		service.getDetails(request, function(place, status) {
-			if (status == google.maps.places.PlacesServiceStatus.OK) {
-				let contentStr = '<h5><strong>'+place.name+'</strong></h5><p>'+place.formatted_address;
-				if (!!place.formatted_phone_number) contentStr += '<br>'+place.formatted_phone_number;
-				if (!!place.website) contentStr += '<br><a target="_blank" href="'+place.website+'">'+place.website+'</a>';
-				//contentStr += '<br>'+place.types+'</p>';
-				//contentStr += '<br>ID: '+place.place_id+'</p>';
+			if (status == google.maps.places.PlacesServiceStatus.OK) { //Verifica el permiso place de la API
+				let contentStr = '<h5><strong>' + place.name + '</strong></h5><p>' + place.formatted_address;
+				if (!!place.formatted_phone_number) {
+					contentStr += '<br>' + place.formatted_phone_number;
+				}
+				
 				infoWindow.setContent(contentStr);
 				infoWindow.open(map,marker);
+
 			} else { 
 				let contentStr = "<h5>No Hubo Resultados, status="+status+"</h5>";
 				infoWindow.setContent(contentStr);
@@ -120,17 +150,37 @@ function setMapOnAll(map) {
 
 buttonSearch.addEventListener('click', () => {
 	setMapOnAll(null); //Borrar las marcas actuales
+
+	listResults.innerHTML = '';
+
 	let service = new google.maps.places.PlacesService(map);
+
 	service.nearbySearch({
 		location: map.getCenter(),
-		radius: 500, 
+		radius: 1500, 
 		types: ['restaurant']
 	}, callback);
 });
 
 //Funciones jquery
-$(document).ready(() => {
-	$('#results').on('click', 'li', () => {
+$(document).ready(function() {
+
+	//No funciona con arrow function
+	$('#results').on('click', 'li', function() {
+		let name = $(this).attr('data-name');
+		let phone = $(this).attr('data-phone');
+		let address = $(this).attr('data-address');
+		let image = $(this).attr('data-image');
+
+		modalImage.src = image;
+		modalName.innerHTML = name;
+		modalAddress.innerHTML = address;
+		if(phone != 'undefined'){
+			modalPhone.innerHTML = phone;
+		}
+		
+
 		$('#modal-result').modal('show');
 	});
+	
 });

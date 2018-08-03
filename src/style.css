@@ -18,6 +18,8 @@ h4 {
 .results {
   padding: 5px;
   background-color: #fff;
+  height: 489px;
+  overflow: scroll;
 }
 
 .results li {

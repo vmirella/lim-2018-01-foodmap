@@ -27,4 +27,4 @@ Una vez cerrado el modal debe volver a la vista principal.
 
 ## * El diseño que se siguió en la versión desktop se puede ver a continuación:
 
-prueba [wireframe] (https://www.figma.com/proto/cE0WIjSwTPcabCv9rYIdh34U/foodmap?node-id=1%3A2&scaling=min-zoom)
+[wireframe] (https://www.figma.com/proto/cE0WIjSwTPcabCv9rYIdh34U/foodmap?node-id=1%3A2&scaling=min-zoom)
